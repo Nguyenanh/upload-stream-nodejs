@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  form(enctype='multipart/form-data', method='post')
+    input(type='file', name='textline')
+    input(type='submit', value='Send')
