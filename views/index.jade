@@ -3,6 +3,31 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
-  form(enctype='multipart/form-data', method='post')
+  form(enctype='multipart/form-data', method='post',id="stream-upload")
     input(type='file', name='textline')
-    input(type='submit', value='Send')
+    input(type='submit', value='Upload')
+  #progress
+    #progressbar
+    #percent 0%
+  </div>
+  script(type='text/javascript').
+    var progressbar = $('#progressbar');
+    var percent = $('#percent');
+    var percentValue = "0%";
+    $('#stream-upload').ajaxForm({
+      beforeUpload: function() {
+        percentValue = "10%";
+        progressbar.width = percentValue;
+        percent.html(percentValue);
+      },
+      uploadProgress: function(event, position, total, percentComplete) {
+        var percentValue = percentComplete + '%';
+        progressbar.width(percentValue)
+        percent.html(percentValue);
+      },
+      success: function() {
+        var percentValue = '100%';
+        progressbar.width(percentValue)
+        percent.html(percentValue);
+      }
+    });

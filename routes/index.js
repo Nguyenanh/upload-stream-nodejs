@@ -18,13 +18,13 @@ router.post('/', function(req, res, next) {
    req.on('data', function(chunk) {
       uploadedBytes += chunk.length;
       var progress = uploadedBytes / fileLength * 100; // Phần trăm upload file.
-      console.log('Uploaded: ' + parseInt(progress, 10) + '% \n');
+      // console.log('Uploaded: ' + parseInt(progress, 10) + '% \n');
   });
 
    req.on('end', function() {
       console.log(new Date().getTime() - time);
       console.log('Your file was uploaded successful!');
-      res.sendStatus(new Date().getTime() - time);
+      // res.sendStatus(new Date().getTime() - time);
    });
 });
 module.exports = router;
