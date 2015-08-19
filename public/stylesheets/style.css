@@ -3,7 +3,7 @@
   background: #A5CCFF;
   border-radius: 5px;
 }
-#progress {
+#progress,#timer {
   border: 1px solid #ccc;
   width: 500px;
   height: 20px;

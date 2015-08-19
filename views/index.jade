@@ -9,11 +9,13 @@ block content
   #progress
     #progressbar
     #percent 0%
+  #timer
   </div>
   script(type='text/javascript').
     var progressbar = $('#progressbar');
     var percent = $('#percent');
     var percentValue = "0%";
+    var timer = $('#timer');
     $('#stream-upload').ajaxForm({
       beforeUpload: function() {
         percentValue = "10%";
@@ -29,5 +31,8 @@ block content
         var percentValue = '100%';
         progressbar.width(percentValue)
         percent.html(percentValue);
+      },
+      complete: function(data) {
+        timer.html(data.status);
       }
     });
